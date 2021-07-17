@@ -1,15 +1,13 @@
 import React from 'react'
-import { Container, SideBarStyle, MainInfo } from '../styles/main'
+import { Container } from '../styles/main'
+import Sidebar from './sidebar/Sidebar';
+import MainWeather from './weather/MainWeather';
 
 const Main = () => {
     return (
         <Container>
-            <SideBarStyle>
-                Sidebar
-            </SideBarStyle>
-            <MainInfo>
-                MainInfo
-            </MainInfo>
+            <Sidebar></Sidebar>
+            <MainWeather></MainWeather>
         </Container>
     )
 }
