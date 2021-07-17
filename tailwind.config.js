@@ -13,7 +13,19 @@ module.exports = {
         coolGray: colors.coolGray,
         gray: colors.gray,
         yellow: colors.yellow,
-        trueGray: colors.trueGray
+        trueGray: colors.trueGray,
+        "blue": {
+          "50": "#11711510b",
+          "100": "#f5f5fa",
+          "200": "#b2b5d7",
+          "300": "#6e75b4",
+          "400": "#40467c",
+          "500": "#1e2039",
+          "600": "#1a1d32",
+          "700": "#181b2f",
+          "800": "#151728",
+          "900": "#111322"
+        }
       }
     },
   },
