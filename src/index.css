@@ -20,3 +20,10 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
 }
+
+
+/* Colors clouds images */
+
+.clouds-color {
+    filter: invert(30%) sepia(27%) saturate(918%) hue-rotate(194deg) brightness(44%) contrast(81%);
+}
