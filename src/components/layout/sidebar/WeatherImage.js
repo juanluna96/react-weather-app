@@ -8,7 +8,7 @@ const clouds = [
     { width: '248px', height: '183px', left: '-70px', top: '225px', right: 'none' },
 ]
 
-const WeatherImage = () => {
+const WeatherImage = ({ image }) => {
     return (
         <Fragment>
             {
@@ -27,8 +27,8 @@ const WeatherImage = () => {
             <LazyLoadImage
                 alt={ `weather-img` }
                 height={ 150 }
-                className="mx-auto mt-36 mb-20"
-                src={ '/static/img/Shower.png' }
+                className="mx-auto mb-20 mt-36"
+                src={ `/static/img/${image}.png` }
                 width={ 150 }
             />
         </Fragment>

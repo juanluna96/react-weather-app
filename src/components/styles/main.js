@@ -9,7 +9,7 @@ const SideBarStyle = tw.aside`
 `
 
 const MainInfo = tw.main`
-    text-red-500 bg-blueGray-900 flex-1
+    bg-blueGray-900 flex-1 py-14 px-3 md:px-48
 `
 
 export { Container, SideBarStyle, MainInfo }

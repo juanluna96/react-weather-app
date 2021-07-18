@@ -13,7 +13,7 @@ const ButtonGray = tw.button`
     text-center
 
     ${(props) => (
-        props.gps
+        props.rounded
             ? "px-4 py-4 w-18 rounded-full"
             : "px-6 py-4 font-medium text-xl"
     )
