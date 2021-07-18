@@ -166,3 +166,60 @@ export const WeatherAPI = {
     "latt_long": "51.506321,-0.12714",
     "timezone": "Europe/London"
 }
+
+export const SearchResults = [
+    {
+        "title": "Melbourne",
+        "location_type": "City",
+        "woeid": 1103816,
+        "latt_long": "-37.817532,144.967148"
+    },
+    {
+        "title": "Boston",
+        "location_type": "City",
+        "woeid": 2367105,
+        "latt_long": "42.358631,-71.056702"
+    },
+    {
+        "title": "Bogotá",
+        "location_type": "City",
+        "woeid": 368148,
+        "latt_long": "4.656370,-74.117790"
+    },
+    {
+        "title": "Boise",
+        "location_type": "City",
+        "woeid": 2366355,
+        "latt_long": "43.606979,-116.193413"
+    },
+    {
+        "title": "Maracaibo",
+        "location_type": "City",
+        "woeid": 395270,
+        "latt_long": "10.734450,-71.630562"
+    },
+    {
+        "title": "Bordeaux",
+        "location_type": "City",
+        "woeid": 580778,
+        "latt_long": "44.836632,-0.581050"
+    },
+    {
+        "title": "Lisbon",
+        "location_type": "City",
+        "woeid": 742676,
+        "latt_long": "38.725670,-9.150370"
+    },
+    {
+        "title": "Boulder",
+        "location_type": "City",
+        "woeid": 2367231,
+        "latt_long": "40.02779,-105.252487"
+    },
+    {
+        "title": "Bournemouth",
+        "location_type": "City",
+        "woeid": 13383,
+        "latt_long": "50.720402,-1.880910"
+    }
+]

@@ -15,7 +15,7 @@ const ProgressHumidity = ({ humidity }) => {
                     </ProgressBarFill>
                 </div>
             </div>
-            <p className="text-sm font-bold text-right text-coolGray-400">%</p>
+            <p className="mt-2 text-sm font-bold text-right text-coolGray-400">%</p>
         </div>
     )
 }

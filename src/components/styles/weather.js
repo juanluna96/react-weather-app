@@ -69,7 +69,7 @@ const StatsData = tw.h1`
 
 const TinyStatsData = tw.h1`
     text-coolGray-200
-    ${(props) => (props.mini ? "font-medium text-6xl -mb-12" : "font-bold text-8xl")}
+    ${(props) => (props.mini ? "font-medium text-6xl -mb-4" : "font-bold text-8xl")}
     mt-3
     mb-10
     flex
