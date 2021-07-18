@@ -2,6 +2,7 @@ import React from 'react';
 import { MainInfo } from '../../styles/main';
 import { ButtonGrades } from '../../styles/weather';
 import DaysWeatherList from './DaysWeather/DaysWeatherList';
+import Statistics from './Statistics';
 
 const MainWeather = () => {
     return (
@@ -11,6 +12,7 @@ const MainWeather = () => {
                 <ButtonGrades>°F</ButtonGrades>
             </div>
             <DaysWeatherList></DaysWeatherList>
+            <Statistics></Statistics>
         </MainInfo>
     )
 }

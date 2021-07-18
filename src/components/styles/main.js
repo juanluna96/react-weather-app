@@ -1,11 +1,11 @@
 import tw from "tailwind-styled-components";
 
 const Container = tw.div`
-    md:flex md:flex-row h-full
+    md:flex md:flex-row overscroll-y-none
 `;
 
 const SideBarStyle = tw.aside`
-    lg:h-screen bg-blue-500 text-gray-300 md:w-1/4 py-14 relative overflow-hidden
+    bg-blue-500 text-gray-300 md:w-1/4 py-14 relative overflow-hidden
 `
 
 const MainInfo = tw.main`

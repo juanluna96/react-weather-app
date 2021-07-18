@@ -21,6 +21,10 @@ body {
     line-height: 1.5;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 
 /* Colors clouds images */
 
