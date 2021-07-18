@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { ProgressBarFill, PorcentContainer } from '../../styles/weather';
 
-const ProgressHumidity = ({ humidity }) => {
+const ProgressHumidity = () => {
+    const humidity = useSelector(state => state.weather.today.humidity);
+
     return (
         <div className="px-6 mt-3 mb-4">
             <PorcentContainer>
@@ -11,7 +14,7 @@ const ProgressHumidity = ({ humidity }) => {
             </PorcentContainer>
             <div className="relative pt-0.5">
                 <div className="flex h-3 overflow-hidden text-xs bg-purple-200 rounded-lg">
-                    <ProgressBarFill style={ { width: `${humidity}%` } }>
+                    <ProgressBarFill style={ { width: `${humidity}%`, transition: 'width 1.8s ease-in-out' } }>
                     </ProgressBarFill>
                 </div>
             </div>

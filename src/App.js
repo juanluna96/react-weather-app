@@ -1,11 +1,13 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import Main from './components/layout/Main';
+import store from './store';
 
 const App = () => {
   return (
-    <div className="font-raleway">
+    <Provider store={ store }>
       <Main></Main>
-    </div>
+    </Provider>
   )
 }
 

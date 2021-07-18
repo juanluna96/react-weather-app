@@ -9,10 +9,10 @@ import {
 } from '../../styles/weather';
 import { TiLocationArrow } from 'react-icons/ti';
 import ProgressHumidity from './ProgressHumidity';
-import { WeatherAPI } from '../../../content';
+import { useSelector } from 'react-redux';
 
 const Statistics = () => {
-    const { consolidated_weather: [today] } = WeatherAPI;
+    const today = useSelector(state => state.weather.today);
 
     const roundNumber = (number) => {
         return Math.round(number);
@@ -37,7 +37,7 @@ const Statistics = () => {
                     <StatsData>
                         { roundNumber(today.humidity) } <StatsData mini="true">%</StatsData>
                     </StatsData>
-                    <ProgressHumidity humidity={ roundNumber(today.humidity) }></ProgressHumidity>
+                    <ProgressHumidity></ProgressHumidity>
                 </StatsContainer>
                 <StatsContainer>
                     <StatsTitle>Visibility</StatsTitle>

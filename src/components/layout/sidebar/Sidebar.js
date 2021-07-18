@@ -4,13 +4,13 @@ import { ButtonGray, TempText, WeatherText, InfoText } from '../../styles/sideba
 import { BiCurrentLocation } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import WeatherImage from './WeatherImage';
-import { WeatherAPI } from '../../../content';
 import Moment from 'react-moment';
+import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
-    const { title, consolidated_weather } = WeatherAPI;
-    const [today] = consolidated_weather;
-    console.log(today);
+    const today = useSelector(state => state.weather.today);
+    const city = useSelector(state => state.weather.city);
+
     return (
         <SideBarStyle>
             <div className="flex justify-between px-6">
@@ -25,7 +25,7 @@ const Sidebar = () => {
             <WeatherText>{ today.weather_state_name }</WeatherText>
             <InfoText>Today &#183; <Moment format="ddd, DD MMM" date={ today.applicable_date } /></InfoText>
             <InfoText city="true">
-                <MdLocationOn size="1.8rem" className="mr-2"></MdLocationOn> { title }
+                <MdLocationOn size="1.8rem" className="mr-2"></MdLocationOn> { city }
             </InfoText>
         </SideBarStyle>
     )
