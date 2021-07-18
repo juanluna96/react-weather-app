@@ -5,7 +5,7 @@ const Container = tw.div`
 `;
 
 const SideBarStyle = tw.aside`
-    h-screen bg-blue-500 text-gray-300 md:w-1/4 py-14 relative overflow-hidden
+    lg:h-screen bg-blue-500 text-gray-300 md:w-1/4 py-14 relative overflow-hidden
 `
 
 const MainInfo = tw.main`
