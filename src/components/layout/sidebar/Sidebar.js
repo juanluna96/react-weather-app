@@ -7,6 +7,7 @@ import WeatherImage from './WeatherImage';
 import Moment from 'react-moment';
 import { useSelector, useDispatch } from 'react-redux';
 import { showHideSearchBarAction } from '../../../actions/SearchAction';
+import { getWeatherGeoLocationAction } from '../../../actions/WeatherAction';
 
 const Sidebar = () => {
     const today = useSelector(state => state.weather.today);
@@ -18,11 +19,20 @@ const Sidebar = () => {
         dispatch(showHideSearchBarAction(searchBar));
     }
 
+    const getWeatherCurrentLocation = () => {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            dispatch(getWeatherGeoLocationAction(latitude, longitude));
+        });
+    }
+
     return (
         <SideBarStyle>
             <div className="flex justify-between px-6">
                 <ButtonGray onClick={ () => showSearchSideBar() }>Search for place</ButtonGray>
-                <ButtonGray rounded="true"><BiCurrentLocation size="2.3rem" /></ButtonGray>
+                <ButtonGray rounded="true" onClick={ () => getWeatherCurrentLocation() }><BiCurrentLocation size="2.3rem" /></ButtonGray>
             </div>
             <WeatherImage image={ today.weather_state_name.replace(' ', "") }></WeatherImage>
             <TempText>

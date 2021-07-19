@@ -11,6 +11,16 @@ export const getWeatherAction = (id = "2459115") => async (dispatch) => {
     }
 };
 
+export const getWeatherGeoLocationAction = (latitude, longitude) => async (dispatch) => {
+    try {
+        const url = `https://www.metaweather.com/api/location/search/?lattlong=${latitude},${longitude}`;
+        const response = await axios.get(url);
+        dispatch(getWeatherAction(response.data[0].woeid));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 const getWeather = (weather) => {
     return ({
         type: GET_ID_WEATHER,
