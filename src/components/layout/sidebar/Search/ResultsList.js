@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { SearchResults } from '../../../../content';
 import Result from './Result';
 
 const ResultsList = () => {
@@ -11,7 +10,7 @@ const ResultsList = () => {
         <ul className="px-5 mt-10">
             {
                 cities.length === 0 && searched === true
-                    ? 'Results not found please try again.'
+                    ? <p className="my-20 text-center">Results not found please try again.</p>
                     : cities.map((city) => (
                         <Result key={ city.woeid } city={ city }></Result>
                     ))
