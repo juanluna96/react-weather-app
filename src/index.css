@@ -8,6 +8,7 @@
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+    height: 100%;
 }
 
 *,
@@ -19,6 +20,7 @@ html {
 body {
     font-size: 1.6rem;
     line-height: 1.5;
+    height: 100%;
 }
 
 ::-webkit-scrollbar {
