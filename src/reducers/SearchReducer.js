@@ -1,8 +1,9 @@
-import { SHOW_HIDE_SEARCHBAR } from '../types';
+import { SHOW_HIDE_SEARCHBAR, GET_CITIES_WEATHER } from '../types';
 
 const initialState = {
     searchBar: false,
-    cities: []
+    cities: [],
+    searched: false
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -10,6 +11,9 @@ export default (state = initialState, { type, payload }) => {
 
         case SHOW_HIDE_SEARCHBAR:
             return { ...state, searchBar: !payload }
+
+        case GET_CITIES_WEATHER:
+            return { ...state, cities: payload, searched: true }
 
         default:
             return state
