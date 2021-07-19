@@ -1,5 +1,5 @@
 import { SHOW_HIDE_SEARCHBAR, GET_CITIES_WEATHER, SAVE_SEARCH_VALUE } from '../types';
-import axios from 'axios';
+import axiosWeather from '../api/axios';
 
 export const showHideSearchBarAction = (status) => async (dispatch) => {
     dispatch(showHideSearchBar(status));
@@ -11,8 +11,8 @@ export const saveSearchValueAction = (search) => async (dispatch) => {
 
 export const searchCitiesWeatherAction = (search) => async (dispatch) => {
     try {
-        const url = `https://www.metaweather.com/api/location/search/?query=${search}`;
-        const response = await axios.get(url);
+        const url = `/location/search/?query=${search}`;
+        const response = await axiosWeather.get(url);
         dispatch(getCitiesWeather(response.data));
     } catch (error) {
         console.error(error);

@@ -1,10 +1,10 @@
-import axios from "axios";
 import { GET_ID_WEATHER, CHANGE_TEMPERATURE_TYPE } from '../types';
+import axiosWeather from '../api/axios';
 
 export const getWeatherAction = (id = "2459115") => async (dispatch) => {
     try {
-        const url = `https://www.metaweather.com/api/location/${id}/`;
-        const response = await axios.get(url);
+        const url = `/location/${id}/`;
+        const response = await axiosWeather.get(url);
         dispatch(getWeather(response.data));
     } catch (error) {
         console.error(error);
@@ -13,8 +13,8 @@ export const getWeatherAction = (id = "2459115") => async (dispatch) => {
 
 export const getWeatherGeoLocationAction = (latitude, longitude) => async (dispatch) => {
     try {
-        const url = `https://www.metaweather.com/api/location/search/?lattlong=${latitude},${longitude}`;
-        const response = await axios.get(url);
+        const url = `/location/search/?lattlong=${latitude},${longitude}`;
+        const response = await axiosWeather.get(url);
         dispatch(getWeatherAction(response.data[0].woeid));
     } catch (error) {
         console.error(error);
