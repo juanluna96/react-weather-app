@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ID_WEATHER } from '../types';
+import { GET_ID_WEATHER, CHANGE_TEMPERATURE_TYPE } from '../types';
 
 export const getWeatherAction = (id = "2459115") => async (dispatch) => {
     try {
@@ -20,6 +20,17 @@ export const getWeatherGeoLocationAction = (latitude, longitude) => async (dispa
         console.error(error);
     }
 };
+
+export const changeWeatherTemperatureAction = temperature => dispatch => {
+    dispatch(changeTemperature(temperature));
+};
+
+const changeTemperature = (temperature) => {
+    return ({
+        type: CHANGE_TEMPERATURE_TYPE,
+        payload: temperature
+    })
+}
 
 const getWeather = (weather) => {
     return ({

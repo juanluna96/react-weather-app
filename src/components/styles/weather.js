@@ -1,7 +1,7 @@
 import tw from "tailwind-styled-components";
 
 const ButtonGrades = tw.button`
-    ${(props) => (props.white ? "bg-coolGray-200 hover:bg-coolGray-700 hover:text-gray-200 text-blueGray-900" : "bg-gray-500 hover:bg-gray-600 text-coolGray-200")}
+    ${(props) => (props.active ? "bg-coolGray-200 hover:bg-coolGray-700 hover:text-gray-200 text-blueGray-900" : "bg-gray-500 hover:bg-gray-600 text-coolGray-200")}
     active:shadow-lg 
     mouse 
     shadow

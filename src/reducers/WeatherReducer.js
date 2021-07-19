@@ -1,4 +1,4 @@
-import { GET_ID_WEATHER } from '../types';
+import { GET_ID_WEATHER, CHANGE_TEMPERATURE_TYPE } from '../types';
 const initialState = {
     today: {
         weather_state_name: "Light Cloud",
@@ -23,6 +23,9 @@ export default (state = initialState, { type, payload }) => {
             const [today] = payload.consolidated_weather;
             const [, ...rest5days] = payload.consolidated_weather;
             return { ...state, today: today, city: title, nextDays: rest5days }
+
+        case CHANGE_TEMPERATURE_TYPE:
+            return { ...state, currentTemperature: payload }
 
         default:
             return state

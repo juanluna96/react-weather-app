@@ -2,9 +2,25 @@ import React from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { DayContainer, DayText } from '../../../styles/weather';
 import Moment from 'react-moment';
+import { useSelector } from 'react-redux';
 
 const DayDetail = ({ day, index }) => {
+    const currentTemperature = useSelector(state => state.weather.currentTemperature);
     const { applicable_date, weather_state_name, max_temp, min_temp } = day;
+
+    const convertTemperature = (temp) => {
+        switch (currentTemperature) {
+            case "°C":
+                var newT = temp;
+                break;
+            case "°F":
+                var newT = temp * 1.8 + 32;
+                break;
+            default:
+                break;
+        }
+        return Math.round(newT);
+    };
 
     return (
         <DayContainer>
@@ -23,8 +39,8 @@ const DayDetail = ({ day, index }) => {
                 src={ `/static/img/${weather_state_name.replace(' ', "")}.png` }
             />
             <div className="flex items-center justify-between">
-                <DayText>{ Math.round(max_temp) }°C</DayText>
-                <DayText mintemp="true">{ Math.round(min_temp) }°C</DayText>
+                <DayText>{ convertTemperature(max_temp) }{ currentTemperature }</DayText>
+                <DayText mintemp="true">{ convertTemperature(min_temp) }{ currentTemperature }</DayText>
             </div>
         </DayContainer>
     )
