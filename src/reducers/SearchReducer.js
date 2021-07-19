@@ -9,7 +9,7 @@ export default (state = initialState, { type, payload }) => {
     switch (type) {
 
         case SHOW_HIDE_SEARCHBAR:
-            return { ...state, ...payload }
+            return { ...state, searchBar: !payload }
 
         default:
             return state

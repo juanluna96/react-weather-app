@@ -1,19 +1,24 @@
 import React from 'react'
 import { SideBarStyle } from '../../../styles/main';
 import { IoMdClose } from 'react-icons/io';
-import { WeatherAPI } from '../../../../content';
 import { CloseButton } from '../../../styles/search';
 import SearchForm from './SearchForm';
 import ResultsList from './ResultsList';
+import { useDispatch, useSelector } from 'react-redux';
+import { showHideSearchBarAction } from '../../../../actions/SearchAction';
 
 const SearchSideBar = () => {
-    const { title, consolidated_weather } = WeatherAPI;
-    const [today] = consolidated_weather;
+    const searchBar = useSelector(state => state.search.searchBar);
+    const dispatch = useDispatch();
+
+    const hideSearchSideBar = () => {
+        dispatch(showHideSearchBarAction(searchBar));
+    }
 
     return (
         <SideBarStyle>
             <div className="flex justify-end px-6">
-                <CloseButton><IoMdClose size="2.3rem" /></CloseButton>
+                <CloseButton onClick={ () => hideSearchSideBar() }><IoMdClose size="2.3rem" /></CloseButton>
             </div>
             <SearchForm></SearchForm>
             <ResultsList></ResultsList>

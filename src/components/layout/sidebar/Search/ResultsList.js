@@ -9,7 +9,7 @@ const ResultsList = () => {
                 SearchResults.length === 0
                     ? 'Result not found please try again.'
                     : SearchResults.map((city) => (
-                        <Result city={ city }></Result>
+                        <Result key={ city.woeid } city={ city }></Result>
                     ))
             }
         </ul>

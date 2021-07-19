@@ -1,7 +1,7 @@
 import axios from "axios";
 import { GET_ID_WEATHER } from '../types';
 
-export const getWeatherAction = (id = "368148") => async (dispatch) => {
+export const getWeatherAction = (id = "2459115") => async (dispatch) => {
     try {
         const url = `https://www.metaweather.com/api/location/${id}/`;
         const response = await axios.get(url);

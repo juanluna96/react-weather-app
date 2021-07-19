@@ -3,10 +3,11 @@ import { Container } from '../styles/main'
 import Sidebar from './sidebar/Sidebar';
 import MainWeather from './weather/MainWeather';
 import SearchSideBar from './sidebar/Search/SearchSideBar';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getWeatherAction } from '../../actions/WeatherAction';
 
 const Main = () => {
+    const searchBar = useSelector(state => state.search.searchBar);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -15,8 +16,11 @@ const Main = () => {
 
     return (
         <Container>
-            {/* <SearchSideBar></SearchSideBar> */ }
-            <Sidebar></Sidebar>
+            {
+                searchBar
+                    ? <SearchSideBar></SearchSideBar>
+                    : <Sidebar></Sidebar>
+            }
             <MainWeather></MainWeather>
         </Container>
     )
