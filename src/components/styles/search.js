@@ -11,7 +11,7 @@ const CloseButton = tw.button`
     duration-200
     focus:outline-none
     text-center
-    -mt-10
+    -mt-5
     -mr-2
     font-bold
     text-3xl

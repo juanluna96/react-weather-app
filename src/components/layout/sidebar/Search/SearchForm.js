@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HiOutlineSearch } from 'react-icons/hi';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchCitiesWeatherAction, saveSearchValueAction } from '../../../../actions/SearchAction';

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Container } from '../styles/main'
 import Sidebar from './sidebar/Sidebar';
 import MainWeather from './weather/MainWeather';
@@ -10,9 +10,13 @@ const Main = () => {
     const searchBar = useSelector(state => state.search.searchBar);
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    const initFetch = useCallback(() => {
         dispatch(getWeatherAction());
-    }, []);
+    }, [dispatch]);
+
+    useEffect(() => {
+        initFetch();
+    }, [initFetch]);
 
     return (
         <Container>

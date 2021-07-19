@@ -25,7 +25,7 @@ const MainWeather = () => {
             <div className="flex justify-end">
                 {
                     temperatures.map((temperature) => (
-                        <ButtonGrades key={ temperature.id } onClick={ () => onChangeTemperature(temperature.title) } active={ currentTemperature === temperature.title ? true : false }>{ temperature.title }</ButtonGrades>
+                        <ButtonGrades key={ temperature.id } onClick={ () => onChangeTemperature(temperature.title) } $active={ currentTemperature === temperature.title }>{ temperature.title }</ButtonGrades>
                     ))
                 }
             </div>

@@ -21,12 +21,13 @@ const Sidebar = () => {
     }
 
     const convertTemperature = (temp) => {
+        var newT = 0;
         switch (currentTemperature) {
             case "°C":
-                var newT = temp;
+                newT = temp;
                 break;
             case "°F":
-                var newT = temp * 1.8 + 32;
+                newT = temp * 1.8 + 32;
                 break;
             default:
                 break;

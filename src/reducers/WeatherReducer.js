@@ -15,6 +15,7 @@ const initialState = {
     currentTemperature: '°C'
 }
 
+/* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 

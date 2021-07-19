@@ -9,12 +9,13 @@ const DayDetail = ({ day, index }) => {
     const { applicable_date, weather_state_name, max_temp, min_temp } = day;
 
     const convertTemperature = (temp) => {
+        var newT = 0;
         switch (currentTemperature) {
             case "°C":
-                var newT = temp;
+                newT = temp;
                 break;
             case "°F":
-                var newT = temp * 1.8 + 32;
+                newT = temp * 1.8 + 32;
                 break;
             default:
                 break;

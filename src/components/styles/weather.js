@@ -1,7 +1,7 @@
 import tw from "tailwind-styled-components";
 
 const ButtonGrades = tw.button`
-    ${(props) => (props.active ? "bg-coolGray-200 hover:bg-coolGray-700 hover:text-gray-200 text-blueGray-900" : "bg-gray-500 hover:bg-gray-600 text-coolGray-200")}
+    ${(props) => (props.$active ? "bg-coolGray-200 hover:bg-coolGray-700 hover:text-gray-200 text-blueGray-900" : "bg-gray-500 hover:bg-gray-600 text-coolGray-200")}
     active:shadow-lg 
     mouse 
     shadow
@@ -59,7 +59,7 @@ const StatsTitle = tw.h3`
     mb-0
 `;
 
-const StatsData = tw.h1`
+const StatsData = tw.span`
     text-coolGray-200
     ${(props) => (props.mini ? "font-medium text-6xl -mb-16" : "font-bold text-9xl")}
     flex
@@ -67,7 +67,7 @@ const StatsData = tw.h1`
     justify-center
 `;
 
-const TinyStatsData = tw.h1`
+const TinyStatsData = tw.span`
     text-coolGray-200
     ${(props) => (props.mini ? "font-medium text-6xl -mb-4" : "font-bold text-8xl")}
     mt-3
