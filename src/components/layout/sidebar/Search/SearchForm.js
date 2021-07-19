@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { HiOutlineSearch } from 'react-icons/hi';
-import { useDispatch } from 'react-redux';
-import { searchCitiesWeatherAction } from '../../../../actions/SearchAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchCitiesWeatherAction, saveSearchValueAction } from '../../../../actions/SearchAction';
 
 const SearchForm = () => {
-    const [search, setSearch] = useState('');
+    const search = useSelector(state => state.search.value);
     const dispatch = useDispatch();
 
     const handleOnChange = (e) => {
-        setSearch(e.target.value);
+        dispatch(saveSearchValueAction(e.target.value));
     }
 
     const handleOnSubmit = (e) => {
