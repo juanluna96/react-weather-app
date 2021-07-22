@@ -32,6 +32,8 @@ const WeatherText = tw.p`
     text-gray-500
     font-semibold
     my-20
+    flex 
+    justify-center
 `;
 
 const InfoText = tw.p`

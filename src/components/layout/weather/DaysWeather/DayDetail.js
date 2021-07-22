@@ -3,6 +3,9 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { DayContainer, DayText } from '../../../styles/weather';
 import Moment from 'react-moment';
 import { useSelector } from 'react-redux';
+import AnimatedNumber from "animated-number-react";
+import moment from 'moment';
+import TextTransition from 'react-text-transition';
 
 const DayDetail = ({ day, index }) => {
     const currentTemperature = useSelector(state => state.weather.currentTemperature);
@@ -20,7 +23,7 @@ const DayDetail = ({ day, index }) => {
             default:
                 break;
         }
-        return Math.round(newT);
+        return newT.toFixed(1);
     };
 
     return (
@@ -29,7 +32,12 @@ const DayDetail = ({ day, index }) => {
                 {
                     index === 0
                         ? 'Tomorrow'
-                        : <Moment format="ddd, DD MMM" date={ applicable_date } />
+                        :
+                        <TextTransition
+                            text={ moment(applicable_date).format("ddd, DD MMM") }
+                            className="text-center"
+                            noWrap={ false }
+                        />
                 }
             </DayText>
             <LazyLoadImage
@@ -40,8 +48,22 @@ const DayDetail = ({ day, index }) => {
                 src={ `/static/img/${weather_state_name.replace(' ', "")}.png` }
             />
             <div className="flex items-center justify-between">
-                <DayText>{ convertTemperature(max_temp) }{ currentTemperature }</DayText>
-                <DayText mintemp="true">{ convertTemperature(min_temp) }{ currentTemperature }</DayText>
+                <DayText>
+                    <AnimatedNumber
+                        value={ max_temp }
+                        formatValue={ convertTemperature }
+                        duration={ 3000 }
+                    />
+                    { currentTemperature }
+                </DayText>
+                <DayText mintemp="true">
+                    <AnimatedNumber
+                        value={ min_temp }
+                        formatValue={ convertTemperature }
+                        duration={ 3000 }
+                    />
+                    { currentTemperature }
+                </DayText>
             </div>
         </DayContainer>
     )

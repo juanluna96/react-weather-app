@@ -8,6 +8,8 @@ import Moment from 'react-moment';
 import { useSelector, useDispatch } from 'react-redux';
 import { showHideSearchBarAction } from '../../../actions/SearchAction';
 import { getWeatherGeoLocationAction } from '../../../actions/WeatherAction';
+import AnimatedNumber from "animated-number-react";
+import TextTransition from 'react-text-transition';
 
 const Sidebar = () => {
     const today = useSelector(state => state.weather.today);
@@ -52,13 +54,28 @@ const Sidebar = () => {
             </div>
             <WeatherImage image={ today.weather_state_name.replace(' ', "") }></WeatherImage>
             <TempText>
-                { convertTemperature(today.the_temp) }
+                <AnimatedNumber
+                    value={ today.the_temp }
+                    formatValue={ convertTemperature }
+                    duration={ 3500 }
+                />
                 <span className="mt-4 text-6xl text-gray-400">{ currentTemperature }</span>
             </TempText>
-            <WeatherText>{ today.weather_state_name }</WeatherText>
+            <WeatherText>
+                <TextTransition
+                    text={ today.weather_state_name }
+                    className="text-center"
+                    noWrap={ false }
+                />
+            </WeatherText>
             <InfoText>Today &#183; <Moment format="ddd, DD MMM" date={ today.applicable_date } /></InfoText>
             <InfoText city="true">
-                <MdLocationOn size="1.8rem" className="mr-2"></MdLocationOn> { city }
+                <MdLocationOn size="1.8rem" className="mr-2"></MdLocationOn>
+                <TextTransition
+                    text={ city }
+                    className="text-center"
+                    noWrap={ false }
+                />
             </InfoText>
         </SideBarStyle>
     )

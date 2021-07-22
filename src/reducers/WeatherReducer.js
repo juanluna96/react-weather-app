@@ -1,7 +1,7 @@
 import { GET_ID_WEATHER, CHANGE_TEMPERATURE_TYPE } from '../types';
 const initialState = {
     today: {
-        weather_state_name: "Light Cloud",
+        weather_state_name: "",
         applicable_date: Date.now(),
         the_temp: 0,
         humidity: 0,

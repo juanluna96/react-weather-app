@@ -10,12 +10,17 @@ import {
 import { TiLocationArrow } from 'react-icons/ti';
 import ProgressHumidity from './ProgressHumidity';
 import { useSelector } from 'react-redux';
+import AnimatedNumber from "animated-number-react";
 
 const Statistics = () => {
     const today = useSelector(state => state.weather.today);
 
     const roundNumber = (number) => {
         return Math.round(number);
+    }
+
+    const formatVisibility = (number) => {
+        return number.toFixed(1).replace('.', ",")
     }
 
     return (
@@ -25,7 +30,12 @@ const Statistics = () => {
                 <StatsContainer>
                     <StatsTitle>Wind status</StatsTitle>
                     <StatsData>
-                        { roundNumber(today.wind_speed) } <StatsData mini="true">mph</StatsData>
+                        <AnimatedNumber
+                            value={ today.wind_speed }
+                            formatValue={ roundNumber }
+                            duration={ 3500 }
+                        />
+                        <StatsData mini="true">mph</StatsData>
                     </StatsData>
                     <p className="flex items-center justify-center mt-5 mb-4 text-coolGray-200">
                         <ButtonLocation><TiLocationArrow className="text-white transform rotate-180" size="1.6rem" /></ButtonLocation>
@@ -35,20 +45,36 @@ const Statistics = () => {
                 <StatsContainer>
                     <StatsTitle>Humidity</StatsTitle>
                     <StatsData>
-                        { roundNumber(today.humidity) } <StatsData mini="true">%</StatsData>
+                        <AnimatedNumber
+                            value={ today.humidity }
+                            formatValue={ roundNumber }
+                            duration={ 3500 }
+                        />
+                        <StatsData mini="true">%</StatsData>
                     </StatsData>
                     <ProgressHumidity></ProgressHumidity>
                 </StatsContainer>
                 <StatsContainer>
                     <StatsTitle>Visibility</StatsTitle>
                     <TinyStatsData>
-                        { today.visibility.toFixed(1).replace('.', ",") } { ' ' }<TinyStatsData mini="true">{ ' ' }miles</TinyStatsData>
+                        <AnimatedNumber
+                            value={ today.visibility }
+                            formatValue={ formatVisibility }
+                            duration={ 3500 }
+                        />
+                        { ' ' }
+                        <TinyStatsData mini="true">{ ' ' }miles</TinyStatsData>
                     </TinyStatsData>
                 </StatsContainer>
                 <StatsContainer>
                     <StatsTitle>Air pressure</StatsTitle>
                     <TinyStatsData>
-                        { roundNumber(today.air_pressure) } <TinyStatsData mini="true">mb</TinyStatsData>
+                        <AnimatedNumber
+                            value={ today.air_pressure }
+                            formatValue={ roundNumber }
+                            duration={ 3500 }
+                        />
+                        <TinyStatsData mini="true">mb</TinyStatsData>
                     </TinyStatsData>
                 </StatsContainer>
             </div>

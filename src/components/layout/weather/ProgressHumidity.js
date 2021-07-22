@@ -14,7 +14,7 @@ const ProgressHumidity = () => {
             </PorcentContainer>
             <div className="relative pt-0.5">
                 <div className="flex h-3 overflow-hidden text-xs bg-purple-200 rounded-lg">
-                    <ProgressBarFill style={ { width: `${humidity}%`, transition: 'width 1.8s ease-in-out' } }>
+                    <ProgressBarFill style={ { width: `${humidity}%`, transition: 'width 3s ease-in-out' } }>
                     </ProgressBarFill>
                 </div>
             </div>

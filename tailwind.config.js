@@ -5,6 +5,15 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      animation: {
+        fadeIn: 'fadeIn 1s linear',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        }
+      },
       fontFamily: {
         'raleway': 'Raleway'
       },
