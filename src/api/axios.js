@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const axiosWeather = axios.create({
-    baseURL: 'https://www.metaweather.com/api'
+    baseURL: process.env["REACT_APP_WEATHER_API"]
 });
 
-export default axiosWeather;
+export default axiosWeather
+
+

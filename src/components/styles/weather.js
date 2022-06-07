@@ -30,6 +30,7 @@ const DayContainer = tw.div`
 const DayText = tw.p`
     font-medium
     my-4
+    mx-auto
 
     ${(props) => (props.title ? "text-3xl" : "text-2xl")}
     ${(props) => (props.mintemp ? "text-coolGray-400" : "text-coolGray-200")}

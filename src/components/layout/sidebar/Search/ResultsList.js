@@ -12,7 +12,7 @@ const ResultsList = () => {
                 cities.length === 0 && searched === true
                     ? <p className="my-20 text-center">Results not found please try again.</p>
                     : cities.map((city) => (
-                        <Result key={ city.woeid } city={ city }></Result>
+                        <Result key={ city.id } city={ city }></Result>
                     ))
             }
         </ul>

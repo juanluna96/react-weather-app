@@ -11,16 +11,13 @@ import { TiLocationArrow } from 'react-icons/ti';
 import ProgressHumidity from './ProgressHumidity';
 import { useSelector } from 'react-redux';
 import AnimatedNumber from "animated-number-react";
+import {convertMetric} from "../../../utils/units";
 
 const Statistics = () => {
     const today = useSelector(state => state.weather.today);
 
     const roundNumber = (number) => {
         return Math.round(number);
-    }
-
-    const formatVisibility = (number) => {
-        return number.toFixed(1).replace('.', ",")
     }
 
     return (
@@ -31,7 +28,7 @@ const Statistics = () => {
                     <StatsTitle>Wind status</StatsTitle>
                     <StatsData>
                         <AnimatedNumber
-                            value={ today.wind_speed }
+                            value={ today.wind.speed }
                             formatValue={ roundNumber }
                             duration={ 3500 }
                         />
@@ -39,14 +36,14 @@ const Statistics = () => {
                     </StatsData>
                     <p className="flex items-center justify-center mt-5 mb-4 text-coolGray-200">
                         <ButtonLocation><TiLocationArrow className="text-white transform rotate-180" size="1.6rem" /></ButtonLocation>
-                        { today.wind_direction_compass }
+                        { today.wind.deg }
                     </p>
                 </StatsContainer>
                 <StatsContainer>
                     <StatsTitle>Humidity</StatsTitle>
                     <StatsData>
                         <AnimatedNumber
-                            value={ today.humidity }
+                            value={ today.main.humidity }
                             formatValue={ roundNumber }
                             duration={ 3500 }
                         />
@@ -59,7 +56,9 @@ const Statistics = () => {
                     <TinyStatsData>
                         <AnimatedNumber
                             value={ today.visibility }
-                            formatValue={ formatVisibility }
+                            formatValue={
+                                (number) => convertMetric('mph', number)
+                            }
                             duration={ 3500 }
                         />
                         { ' ' }
@@ -70,7 +69,7 @@ const Statistics = () => {
                     <StatsTitle>Air pressure</StatsTitle>
                     <TinyStatsData>
                         <AnimatedNumber
-                            value={ today.air_pressure }
+                            value={ today.main.pressure }
                             formatValue={ roundNumber }
                             duration={ 3500 }
                         />

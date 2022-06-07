@@ -1,5 +1,5 @@
 import { SHOW_HIDE_SEARCHBAR, GET_CITIES_WEATHER, SAVE_SEARCH_VALUE } from '../types';
-import axiosWeather from '../api/axios';
+import axiosCities from "../api/cities_api";
 
 export const showHideSearchBarAction = (status) => async (dispatch) => {
     dispatch(showHideSearchBar(status));
@@ -9,11 +9,25 @@ export const saveSearchValueAction = (search) => async (dispatch) => {
     dispatch(saveSearchValue(search));
 };
 
+export const getCitiesNearbyAction  = (latitude, longitude) => async (dispatch) => {
+    const url = `/locations/${latitude}${longitude}/nearbyCities`;
+    try {
+        const response = await axiosCities.get(url);
+        dispatch(getCitiesWeather(response.data.data));
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const searchCitiesWeatherAction = (search) => async (dispatch) => {
     try {
-        const url = `/location/search/?query=${search}`;
-        const response = await axiosWeather.get(url);
-        dispatch(getCitiesWeather(response.data));
+        const url = '/cities';
+        const response = await axiosCities.get(url, {
+            params: {
+                namePrefix: search
+            }
+        });
+        dispatch(getCitiesWeather(response.data.data));
     } catch (error) {
         console.error(error);
     }

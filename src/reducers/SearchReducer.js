@@ -15,7 +15,7 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, searchBar: !payload }
 
         case GET_CITIES_WEATHER:
-            return { ...state, cities: payload, searched: true }
+            return { ...state, cities: payload }
 
         case SAVE_SEARCH_VALUE:
             return { ...state, value: payload }

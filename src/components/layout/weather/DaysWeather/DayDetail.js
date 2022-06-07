@@ -1,30 +1,15 @@
 import React from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { DayContainer, DayText } from '../../../styles/weather';
-import Moment from 'react-moment';
 import { useSelector } from 'react-redux';
 import AnimatedNumber from "animated-number-react";
 import moment from 'moment';
 import TextTransition from 'react-text-transition';
+import {convertTemperature} from "../../../../utils/units";
 
 const DayDetail = ({ day, index }) => {
     const currentTemperature = useSelector(state => state.weather.currentTemperature);
-    const { applicable_date, weather_state_name, max_temp, min_temp } = day;
-
-    const convertTemperature = (temp) => {
-        var newT = 0;
-        switch (currentTemperature) {
-            case "°C":
-                newT = temp;
-                break;
-            case "°F":
-                newT = temp * 1.8 + 32;
-                break;
-            default:
-                break;
-        }
-        return newT.toFixed(1);
-    };
+    const { dt_txt, weather:[current], main:{temp_max,temp_min} } = day;
 
     return (
         <DayContainer>
@@ -34,32 +19,34 @@ const DayDetail = ({ day, index }) => {
                         ? 'Tomorrow'
                         :
                         <TextTransition
-                            text={ moment(applicable_date).format("ddd, DD MMM") }
+                            text={ moment(dt_txt).format("ddd, DD MMM") }
                             className="text-center"
                             noWrap={ false }
                         />
                 }
             </DayText>
             <LazyLoadImage
-                alt={ `weather-img` }
+                alt={ `${current.description.replace(' ', "-")}` }
                 width={ 57 }
                 height={ 62 }
                 className="mx-auto mt-2 mb-8"
-                src={ `/static/img/${weather_state_name.replace(' ', "")}.png` }
+                src={ `/static/img/${current.description.replace(' ', "-")}.png` }
             />
             <div className="flex items-center justify-between">
                 <DayText>
                     <AnimatedNumber
-                        value={ max_temp }
-                        formatValue={ convertTemperature }
+                        value={ temp_max }
+                        formatValue={(n)=> convertTemperature(currentTemperature,n) }
                         duration={ 3000 }
                     />
                     { currentTemperature }
                 </DayText>
                 <DayText mintemp="true">
                     <AnimatedNumber
-                        value={ min_temp }
-                        formatValue={ convertTemperature }
+                        value={ temp_min }
+                        formatValue={
+                            (n)=> convertTemperature(currentTemperature,n)
+                        }
                         duration={ 3000 }
                     />
                     { currentTemperature }

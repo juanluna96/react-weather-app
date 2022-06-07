@@ -1,7 +1,7 @@
 import tw from "tailwind-styled-components";
 
 const Container = tw.div`
-    md:flex md:flex-row overscroll-y-none font-raleway 2xl:h-full
+    md:flex md:flex-row overscroll-y-none font-raleway h-full bg-blueGray-900
 `;
 
 const SideBarStyle = tw.aside`

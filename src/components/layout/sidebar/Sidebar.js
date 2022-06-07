@@ -6,10 +6,11 @@ import { MdLocationOn } from 'react-icons/md';
 import WeatherImage from './WeatherImage';
 import Moment from 'react-moment';
 import { useSelector, useDispatch } from 'react-redux';
-import { showHideSearchBarAction } from '../../../actions/SearchAction';
-import { getWeatherGeoLocationAction } from '../../../actions/WeatherAction';
+import {getCitiesNearbyAction, showHideSearchBarAction} from '../../../actions/SearchAction';
+import { getWeatherGeoLocationAction} from '../../../actions/WeatherAction';
 import AnimatedNumber from "animated-number-react";
 import TextTransition from 'react-text-transition';
+import {convertTemperature} from "../../../utils/units";
 
 const Sidebar = () => {
     const today = useSelector(state => state.weather.today);
@@ -22,27 +23,13 @@ const Sidebar = () => {
         dispatch(showHideSearchBarAction(searchBar));
     }
 
-    const convertTemperature = (temp) => {
-        var newT = 0;
-        switch (currentTemperature) {
-            case "°C":
-                newT = temp;
-                break;
-            case "°F":
-                newT = temp * 1.8 + 32;
-                break;
-            default:
-                break;
-        }
-        return Math.round(newT);
-    };
-
     const getWeatherCurrentLocation = () => {
         navigator.geolocation.getCurrentPosition(function (position) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
             dispatch(getWeatherGeoLocationAction(latitude, longitude));
+            dispatch(getCitiesNearbyAction(latitude, longitude));
         });
     }
 
@@ -52,18 +39,20 @@ const Sidebar = () => {
                 <ButtonGray onClick={ () => showSearchSideBar() }>Search for place</ButtonGray>
                 <ButtonGray rounded="true" onClick={ () => getWeatherCurrentLocation() }><BiCurrentLocation size="2.3rem" /></ButtonGray>
             </div>
-            <WeatherImage image={ today.weather_state_name.replace(' ', "") }></WeatherImage>
+            <WeatherImage image={ today.weather[0].description.replace(' ', "-") }></WeatherImage>
             <TempText>
                 <AnimatedNumber
-                    value={ today.the_temp }
-                    formatValue={ convertTemperature }
+                    value={ today.main.temp }
+                    formatValue={
+                        (n)=> convertTemperature(currentTemperature,n)
+                    }
                     duration={ 3500 }
                 />
                 <span className="mt-4 text-6xl text-gray-400">{ currentTemperature }</span>
             </TempText>
             <WeatherText>
                 <TextTransition
-                    text={ today.weather_state_name }
+                    text={ today.name }
                     className="text-center"
                     noWrap={ false }
                 />

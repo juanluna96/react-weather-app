@@ -19,13 +19,13 @@ const WeatherImage = ({ image }) => {
                         height={ cloud.height }
                         className="clouds-color"
                         style={ { position: 'absolute', left: cloud.left, right: cloud.right, top: cloud.top } }
-                        src={ '/static/img/HeavyCloud.png' }
+                        src={ '/static/img/few-clouds.png' }
                         width={ cloud.height }
                     />
                 ))
             }
             <LazyLoadImage
-                alt={ `weather-img` }
+                alt={ `${image}` }
                 height={ 150 }
                 className="mx-auto mb-20 mt-36"
                 src={ `/static/img/${image}.png` }
