@@ -33,3 +33,7 @@ body {
 .clouds-color {
     filter: invert(30%) sepia(27%) saturate(918%) hue-rotate(194deg) brightness(44%) contrast(81%);
 }
+
+.icon-weather{
+    filter: invert(97%) sepia(22%) saturate(3615%) hue-rotate(365deg) brightness(108%) contrast(110%);
+}
