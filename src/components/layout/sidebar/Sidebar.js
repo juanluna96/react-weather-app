@@ -77,7 +77,11 @@ const Sidebar = () => {
       </InfoText>
       <InfoText city="true">
         <MdLocationOn size="1.8rem" className="mr-2"></MdLocationOn>
-        <TextTransition text={city} className="text-center" noWrap={false} />
+        <TextTransition
+          text={today.name}
+          className="text-center"
+          noWrap={false}
+        />
       </InfoText>
     </SideBarStyle>
   );
